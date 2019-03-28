@@ -1,10 +1,11 @@
 import '../parser.dart';
 
 class StringParser extends Parser<String> {
-  get associatedTypeSymbol => #String;
-  
   @override
-  String fromJson(dynamic data) {
+  get associatedTypeSymbol => #String;
+
+  @override
+  String fromJson(dynamic data, [Type type]) {
     if(data is String) {
       return data;
     }
@@ -12,7 +13,7 @@ class StringParser extends Parser<String> {
   }
 
   @override
-  toJson(String data) {
+  toJson(String data, [Type type]) {
     return data;
   }
 }

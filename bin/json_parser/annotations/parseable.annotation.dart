@@ -1,0 +1,3 @@
+class JsonParseable {
+  const JsonParseable();
+}

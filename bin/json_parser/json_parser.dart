@@ -1,18 +1,48 @@
 import 'parsers/parser.dart';
 import 'parsers/basic/basic.parser.dart';
 
-class GlobalJsonParser {
-  static List<Parser> parsers;
+class GlobalJsonParserInstance {
+  static Map<Symbol, Parser> parsers;
+  static List<Symbol> queuedParsers;
 
-  initialize({bool includeBasicParsers = true}) {
-    parsers = [];
+  static initialize({bool includeBasicParsers = true}) {
+    parsers = {};
+    queuedParsers = [];
     if (includeBasicParsers) {
-      parsers.add(BoolParser());
-      parsers.add(DateTimeParser());
-      parsers.add(DoubleParser());
-      parsers.add(IntParser());
-      parsers.add(NumParser());
-      parsers.add(StringParser());
+      addParser(BoolParser());
+      addParser(DateTimeParser());
+      addParser(DoubleParser());
+      addParser(IntParser());
+      addParser(NumParser());
+      addParser(StringParser());
     }
+  }
+
+  static void queueParser(Symbol symbol) {
+    if (!queuedParsers.contains(symbol)) {
+      queuedParsers.add(symbol);
+    }
+  }
+
+  static void dequeueParser(Symbol symbol) {
+    if (queuedParsers.contains(symbol)) {
+      queuedParsers.remove(symbol);
+    }
+  }
+
+  static void addParser(Parser parser) {
+    parsers.putIfAbsent(parser.associatedTypeSymbol, () => parser);
+    dequeueParser(parser.associatedTypeSymbol);
+  }
+
+  static bool hasParser(Symbol symbol, {bool allowQueued = true}) {
+    return parsers.containsKey(symbol) || (allowQueued && queuedParsers.contains(symbol));
+  }
+
+  static Parser getParser(Symbol symbol) {
+    if (hasParser(symbol, allowQueued: false)) {
+      return parsers[symbol];
+    }
+    return null;
   }
 }

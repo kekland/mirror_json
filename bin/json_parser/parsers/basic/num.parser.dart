@@ -1,10 +1,11 @@
 import '../parser.dart';
 
 class NumParser extends Parser<num> {
+  @override
   get associatedTypeSymbol => #num;
 
   @override
-  num fromJson(dynamic data) {
+  num fromJson(dynamic data, [Type type]) {
     if(data is num) {
       return data;
     }
@@ -12,7 +13,7 @@ class NumParser extends Parser<num> {
   }
 
   @override
-  toJson(num data) {
+  toJson(num data, [Type type]) {
     return data;
   }
 }

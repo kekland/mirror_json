@@ -1,10 +1,11 @@
 import '../parser.dart';
 
 class DoubleParser extends Parser<double> {
-  get associatedTypeSymbol => #double;
-  
   @override
-  double fromJson(dynamic data) {
+  get associatedTypeSymbol => #double;
+
+  @override
+  double fromJson(dynamic data, [Type type]) {
     if(data is num) {
       return data.toDouble();
     }
@@ -12,8 +13,7 @@ class DoubleParser extends Parser<double> {
   }
 
   @override
-  toJson(double data) {
-    // TODO: implement toJson
-    return null;
+  toJson(double data, [Type type]) {
+    return data;
   }
 }

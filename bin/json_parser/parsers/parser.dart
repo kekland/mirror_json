@@ -1,8 +1,6 @@
 abstract class Parser<T> {
   Symbol get associatedTypeSymbol;
-  dynamic toJson(T data);
+  dynamic toJson(T data, [Type type]);
 
-  T fromJson(dynamic json);
+  T fromJson(dynamic json, [Type type]);
 }
-
-abstract class ComplexParser<T, C> extends Parser<T> {}
