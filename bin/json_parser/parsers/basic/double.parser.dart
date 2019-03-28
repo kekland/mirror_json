@@ -5,7 +5,7 @@ class DoubleParser extends Parser<double> {
   get associatedTypeSymbol => #double;
 
   @override
-  double fromJson(dynamic data, [Type type]) {
+  double fromJson(dynamic data, [Symbol typeArgumentSymbol]) {
     if(data is num) {
       return data.toDouble();
     }
@@ -13,7 +13,7 @@ class DoubleParser extends Parser<double> {
   }
 
   @override
-  toJson(double data, [Type type]) {
+  toJson(double data, [Symbol typeArgumentSymbol]) {
     return data;
   }
 }

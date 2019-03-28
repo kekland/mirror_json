@@ -72,7 +72,7 @@ class ClassParser<T> extends Parser<T> {
   }
 
   @override
-  T fromJson(json, [Type type]) {
+  T fromJson(json, [Symbol typeArgumentSymbol]) {
     InstanceMirror mirror = (reflectType(T) as ClassMirror).newInstance(Symbol(''), []);
     actions.forEach((name, action) {
       var data = json[action.fieldName];
@@ -82,7 +82,7 @@ class ClassParser<T> extends Parser<T> {
   }
 
   @override
-  toJson(T data, [Type type]) {
+  toJson(T data, [Symbol typeArgumentSymbol]) {
     InstanceMirror mirror = reflect(data);
     Map json = {};
     actions.forEach((name, action) {

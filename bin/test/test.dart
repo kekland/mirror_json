@@ -24,12 +24,13 @@ void test() {
   var parser = new ClassParser<Human>();
   var human = parser.fromJson({
     "age": 18,
-    "name": {
-      "first": "ee",
-      "last": "bb"
-    }
+    "name": {"first": "ee", "last": "bb"}
   });
 
   print(human);
-  print(parser.toJson(human));
+  var time = DateTime.now().millisecondsSinceEpoch;
+  for (var i = 0; i < 100000; i++) {
+    parser.toJson(human);
+  }
+  print(DateTime.now().millisecondsSinceEpoch - time);
 }
