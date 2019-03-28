@@ -6,8 +6,9 @@ import '../json_parser/parsers/class.parser.dart';
 class Human {
   Name name;
   int age;
+  List<int> testList;
 
-  Human({this.name, this.age});
+  Human({this.name, this.age, this.testList});
 }
 
 @JsonParseable()
@@ -24,13 +25,10 @@ void test() {
   var parser = new ClassParser<Human>();
   var human = parser.fromJson({
     "age": 18,
-    "name": {"first": "ee", "last": "bb"}
+    "name": {"first": "ee", "last": "bb"},
+    "testList": [0, 1, 2, 3, 4]
   });
 
-  print(human);
-  var time = DateTime.now().millisecondsSinceEpoch;
-  for (var i = 0; i < 100000; i++) {
-    parser.toJson(human);
-  }
-  print(DateTime.now().millisecondsSinceEpoch - time);
+  print(human.testList);
+  print(parser.toJson(human));
 }

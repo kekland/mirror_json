@@ -5,7 +5,7 @@ class StringParser extends Parser<String> {
   get associatedTypeSymbol => #String;
 
   @override
-  String fromJson(dynamic data, [Symbol typeArgumentSymbol]) {
+  String fromJson(dynamic data, {Symbol typeArgumentSymbol, Type type}) {
     if(data is String) {
       return data;
     }
@@ -13,7 +13,7 @@ class StringParser extends Parser<String> {
   }
 
   @override
-  toJson(String data, [Symbol typeArgumentSymbol]) {
+  toJson(String data, {Symbol typeArgumentSymbol, Type type}) {
     return data;
   }
 }

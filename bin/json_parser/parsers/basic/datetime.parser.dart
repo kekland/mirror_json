@@ -5,13 +5,13 @@ class DateTimeParser extends Parser<DateTime> {
   get associatedTypeSymbol => #DateTime;
 
   @override
-  DateTime fromJson(dynamic data, [Symbol typeArgumentSymbol]) {
+  DateTime fromJson(dynamic data, {Symbol typeArgumentSymbol, Type type}) {
     // TODO: implement fromJson
     return null;
   }
 
   @override
-  toJson(DateTime data, [Symbol typeArgumentSymbol]) {
+  toJson(DateTime data, {Symbol typeArgumentSymbol, Type type}) {
     // TODO: implement toJson
     return null;
   }

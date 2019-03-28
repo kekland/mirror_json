@@ -5,7 +5,7 @@ class BoolParser extends Parser<bool> {
   get associatedTypeSymbol => #bool;
 
   @override
-  bool fromJson(dynamic data, [Symbol typeArgumentSymbol]) {
+  bool fromJson(dynamic data, {Symbol typeArgumentSymbol, Type type}) {
     if(data is bool) {
       return data;
     }
@@ -13,7 +13,7 @@ class BoolParser extends Parser<bool> {
   }
 
   @override
-  toJson(bool data, [Symbol typeArgumentSymbol]) {
+  toJson(bool data, {Symbol typeArgumentSymbol, Type type}) {
     return data;
   }
 }

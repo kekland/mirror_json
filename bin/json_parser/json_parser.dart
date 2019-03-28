@@ -1,3 +1,4 @@
+import 'parsers/complex/list.parser.dart';
 import 'parsers/parser.dart';
 import 'parsers/basic/basic.parser.dart';
 
@@ -15,6 +16,7 @@ class GlobalJsonParserInstance {
       addParser(IntParser());
       addParser(NumParser());
       addParser(StringParser());
+      addParser(ListParser());
     }
   }
 

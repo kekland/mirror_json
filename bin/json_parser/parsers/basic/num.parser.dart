@@ -5,7 +5,7 @@ class NumParser extends Parser<num> {
   get associatedTypeSymbol => #num;
 
   @override
-  num fromJson(dynamic data, [Symbol typeArgumentSymbol]) {
+  num fromJson(dynamic data, {Symbol typeArgumentSymbol, Type type}) {
     if(data is num) {
       return data;
     }
@@ -13,7 +13,7 @@ class NumParser extends Parser<num> {
   }
 
   @override
-  toJson(num data, [Symbol typeArgumentSymbol]) {
+  toJson(num data, {Symbol typeArgumentSymbol, Type type}) {
     return data;
   }
 }

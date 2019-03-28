@@ -7,10 +7,24 @@ class ClassParserAction {
   String fieldName;
   Symbol symbol;
   Symbol parserSymbol;
-  Type type;
+  Parser parser;
+  Symbol typeArgumentSymbol;
+  Type typeArgument;
 
-  ClassParserAction({this.symbol, this.parserSymbol, this.type}) {
+  ClassParserAction({this.symbol, this.parserSymbol, this.typeArgument}) {
+    this.parser = GlobalJsonParserInstance.getParser(parserSymbol);
     this.fieldName = MirrorSystem.getName(symbol);
+    if(this.typeArgument != null) {
+      this.typeArgumentSymbol = reflectType(this.typeArgument).simpleName;
+    }
+  }
+
+  fromJson(dynamic json) {
+    return parser.fromJson(json, typeArgumentSymbol: typeArgumentSymbol, type: typeArgument);
+  }
+
+  toJson(dynamic object) {
+    return parser.toJson(object, typeArgumentSymbol: typeArgumentSymbol, type: typeArgument);
   }
 }
 
@@ -51,12 +65,14 @@ class ClassParser<T> extends Parser<T> {
       actions[name] = ClassParserAction(
         parserSymbol: typeName,
         symbol: name,
+        typeArgument: (mirror.type.typeArguments.length > 0)? mirror.type.typeArguments.first.reflectedType : null, 
       );
     } else if (mirror.type is ClassMirror && _isParseable(mirror.type)) {
       ClassParser.fromType(mirror.type.reflectedType);
       actions[name] = ClassParserAction(
         parserSymbol: typeName,
         symbol: name,
+        typeArgument: (mirror.type.typeArguments.length > 0)? mirror.type.typeArguments.first.reflectedType : null, 
       );
     }
   }
@@ -72,22 +88,22 @@ class ClassParser<T> extends Parser<T> {
   }
 
   @override
-  T fromJson(json, [Symbol typeArgumentSymbol]) {
+  T fromJson(json, {Symbol typeArgumentSymbol, Type type}) {
     InstanceMirror mirror = (reflectType(T) as ClassMirror).newInstance(Symbol(''), []);
     actions.forEach((name, action) {
       var data = json[action.fieldName];
-      mirror.setField(name, GlobalJsonParserInstance.getParser(action.parserSymbol).fromJson(data));
+      mirror.setField(name, action.fromJson(data));
     });
     return mirror.reflectee;
   }
 
   @override
-  toJson(T data, [Symbol typeArgumentSymbol]) {
+  toJson(T data, {Symbol typeArgumentSymbol, Type type}) {
     InstanceMirror mirror = reflect(data);
     Map json = {};
     actions.forEach((name, action) {
       var data = mirror.getField(name).reflectee;
-      json[action.fieldName] = GlobalJsonParserInstance.getParser(action.parserSymbol).toJson(data);
+      json[action.fieldName] = action.toJson(data);
     });
     return json;
   }
