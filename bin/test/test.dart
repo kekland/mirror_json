@@ -6,7 +6,7 @@ import '../json_parser/parsers/class.parser.dart';
 class Human {
   Name name;
   int age;
-  List<int> testList;
+  List<List<Name>> testList;
 
   Human({this.name, this.age, this.testList});
 }
@@ -26,7 +26,24 @@ void test() {
   var human = parser.fromJson({
     "age": 18,
     "name": {"first": "ee", "last": "bb"},
-    "testList": [0, 1, 2, 3, 4]
+    "testList": [
+      [
+        {
+          "first": "1",
+          "last": "2",
+        },
+        {
+          "first": "3",
+          "last": "4",
+        },
+      ],
+      [
+        {
+          "first": "5",
+          "last": "6",
+        },
+      ]
+    ]
   });
 
   print(human.testList);

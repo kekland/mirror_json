@@ -10,9 +10,11 @@ class ListParser extends Parser<List> {
   @override
   List fromJson(dynamic data, {Symbol typeArgumentSymbol, Type type}) {
     if (data is List) {
+      print(typeArgumentSymbol);
       var mirror = (reflectType(List, [type]) as ClassMirror).newInstance(Symbol(''), []);
       data.forEach((obj) {
-        mirror.reflectee.add(GlobalJsonParserInstance.getParser(typeArgumentSymbol).fromJson(
+        var parser = GlobalJsonParserInstance.getParser(typeArgumentSymbol);
+        mirror.reflectee.add(parser.fromJson(
           obj,
           typeArgumentSymbol: typeArgumentSymbol,
           type: type,
@@ -26,7 +28,7 @@ class ListParser extends Parser<List> {
   @override
   toJson(List data, {Symbol typeArgumentSymbol, Type type}) {
     List returnData = [];
-    
+
     data.forEach((obj) {
       returnData.add(GlobalJsonParserInstance.getParser(typeArgumentSymbol).toJson(
         obj,
