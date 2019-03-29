@@ -1,6 +1,6 @@
-import 'parsers/complex/list.parser.dart';
+import 'parsers/complex/list_parser.dart';
 import 'parsers/parser.dart';
-import 'parsers/basic/basic.parser.dart';
+import 'parsers/basic/basic_parser.dart';
 
 class GlobalJsonParserInstance {
   static Map<Symbol, Parser> parsers;

@@ -11,7 +11,7 @@ class ListParser extends Parser<List> {
     if (data is List) {
       var typeMirror = reflectType(type);
       var mirror = (reflectType(type) as ClassMirror).newInstance(Symbol(''), []);
-      var argumentType = typeMirror.typeArguments.length > 0 ? typeMirror.typeArguments.first : null;
+      var argumentType = typeMirror.typeArguments.isNotEmpty ? typeMirror.typeArguments.first : null;
 
       data.forEach((obj) {
         var parser = GlobalJsonParserInstance.getParser(argumentType.simpleName);
@@ -30,7 +30,7 @@ class ListParser extends Parser<List> {
   toJson(List data, {Symbol typeArgumentSymbol, Type type}) {
     List returnList = [];
     var typeMirror = reflectType(type);
-    var argumentType = typeMirror.typeArguments.length > 0 ? typeMirror.typeArguments.first : null;
+    var argumentType = typeMirror.typeArguments.isNotEmpty ? typeMirror.typeArguments.first : null;
 
     data.forEach((obj) {
       var parser = GlobalJsonParserInstance.getParser(argumentType.simpleName);

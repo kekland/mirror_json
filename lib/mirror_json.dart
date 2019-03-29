@@ -1,6 +1,6 @@
-export './src/annotations//parseable.annotation.dart';
-export './src/parsers/basic/basic.parser.dart';
-export './src/parsers/complex/list.parser.dart';
-export './src/parsers/class.parser.dart';
+export './src/annotations/parseable_annotation.dart';
+export './src/parsers/basic/basic_parser.dart';
+export './src/parsers/complex/list_parser.dart';
+export './src/parsers/class_parser.dart';
 export './src/parsers/parser.dart';
 export './src/global_instance.dart';
