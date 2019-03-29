@@ -3,6 +3,8 @@ description: A Dart library for parsing JSON objects using reflection (dart:mirr
 homepage: https://kekland.github.io/mirror_json
 version: 0.0.3
 author: Erzhan <kk.erzhan@gmail.com>
+repository: https://github.com/kekland/mirror_json
+issue_tracker: https://github.com/kekland/mirror_json/issues
 
 environment:
   sdk: '>=2.0.0 <3.0.0'
