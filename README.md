@@ -2,6 +2,8 @@
 
 [![star this repo](https://githubbadges.com/star.svg?user=kekland&repo=mirror_json&style=flat)](https://github.com/kekland/mirror_json)
 [![fork this repo](https://githubbadges.com/fork.svg?user=kekland&repo=mirror_json&style=flat)](https://github.com/kekland/mirror_json/fork)
+![Build](https://img.shields.io/travis/kekland/mirror_json.svg)
+![Pub](https://img.shields.io/pub/v/mirror_json.svg)
 
 A **Dart** library for parsing JSON objects using `dart:mirrors`.
 
