@@ -33,6 +33,9 @@ class ClassParser<T> extends Parser<T> {
   Map<Symbol, ClassParserAction> actions;
 
   @override
+  get associatedType => classTypeMirror.reflectedType;
+
+  @override
   Symbol get associatedTypeSymbol => classTypeMirror.simpleName;
 
   factory ClassParser.fromType(Type R) {

@@ -2,6 +2,9 @@ import '../parser.dart';
 
 class DateTimeParser extends Parser<DateTime> {
   @override
+  get associatedType => DateTime;
+
+  @override
   get associatedTypeSymbol => #DateTime;
 
   @override

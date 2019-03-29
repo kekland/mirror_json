@@ -2,6 +2,9 @@ import '../parser.dart';
 
 class NumParser extends Parser<num> {
   @override
+  get associatedType => num;
+
+  @override
   get associatedTypeSymbol => #num;
 
   @override

@@ -2,6 +2,9 @@ import '../parser.dart';
 
 class DoubleParser extends Parser<double> {
   @override
+  get associatedType => double;
+
+  @override
   get associatedTypeSymbol => #double;
 
   @override

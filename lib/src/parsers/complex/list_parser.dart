@@ -4,6 +4,9 @@ import '../parser.dart';
 
 class ListParser extends Parser<List> {
   @override
+  get associatedType => List;
+
+  @override
   get associatedTypeSymbol => #List;
 
   @override

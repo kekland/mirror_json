@@ -2,6 +2,9 @@ import '../parser.dart';
 
 class BoolParser extends Parser<bool> {
   @override
+  get associatedType => bool;
+
+  @override
   get associatedTypeSymbol => #bool;
 
   @override

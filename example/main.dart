@@ -1,8 +1,9 @@
 import 'package:mirror_json/mirror_json.dart';
+import 'package:mirror_json/src/mixins/json_parser_mixin.dart';
 
 // Use this annotation to show that this class can be parsed.
 @JsonParseable()
-class Human {
+class Human with JsonParser<Human> {
   Name name;
   int age;
 

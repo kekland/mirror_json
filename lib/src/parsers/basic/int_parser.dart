@@ -2,6 +2,9 @@ import '../parser.dart';
 
 class IntParser extends Parser<int> {
   @override
+  get associatedType => int;
+
+  @override
   get associatedTypeSymbol => #int;
 
   @override

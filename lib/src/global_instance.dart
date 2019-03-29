@@ -48,4 +48,8 @@ class GlobalJsonParserInstance {
     }
     return null;
   }
+  
+  static Parser getParserByType(Type type) {
+    return parsers.values.firstWhere((parser) => parser.associatedType == type);
+  }
 }
