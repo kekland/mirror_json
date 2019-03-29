@@ -17,6 +17,7 @@ class GlobalJsonParserInstance {
       addParser(NumParser());
       addParser(StringParser());
       addParser(ListParser());
+      addParser(DynamicParser());
     }
   }
 
