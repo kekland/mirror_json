@@ -78,6 +78,9 @@
   <div id="dartdoc-main-content" class="col-xs-12 col-sm-9 col-md-8 main-content">
       <div><h1>ClassParser&lt;<wbr><span class="type-parameter">T</span>&gt; class </h1></div>
 
+    <section class="desc markdown">
+      <p>A ready-to-use parser for classes. See <a href="mirror_json/Parser-class.html">Parser</a> for more info.</p>
+    </section>
     
     <section>
       <dl class="dl-horizontal">
@@ -99,7 +102,7 @@
 
       <dl class="constructor-summary-list">
         <dt id="ClassParser" class="callable">
-          <span class="name"><a href="mirror_json/ClassParser/ClassParser.html">ClassParser</a></span><span class="signature">({<span class="parameter" id="-param-preheat"><span class="type-annotation">bool</span> <span class="parameter-name">preheat</span>: <span class="default-value">true</span>, </span> <span class="parameter" id="-param-register"><span class="type-annotation">bool</span> <span class="parameter-name">register</span>: <span class="default-value">true</span></span> })</span>
+          <span class="name"><a href="mirror_json/ClassParser/ClassParser.html">ClassParser</a></span><span class="signature">({<span class="parameter" id="-param-bake"><span class="type-annotation">bool</span> <span class="parameter-name">bake</span>: <span class="default-value">true</span>, </span> <span class="parameter" id="-param-register"><span class="type-annotation">bool</span> <span class="parameter-name">register</span>: <span class="default-value">true</span></span> })</span>
         </dt>
         <dd>
           
@@ -118,29 +121,21 @@
       <h2>Properties</h2>
 
       <dl class="properties">
-        <dt id="actions" class="property">
-          <span class="name"><a href="mirror_json/ClassParser/actions.html">actions</a></span>
-          <span class="signature">&#8596; Map<span class="signature">&lt;<wbr><span class="type-parameter">Symbol</span>, <span class="type-parameter"><a href="mirror_json/ClassParserAction-class.html">ClassParserAction</a></span>&gt;</span></span>         
+        <dt id="associatedType" class="property">
+          <span class="name"><a href="mirror_json/ClassParser/associatedType.html">associatedType</a></span>
+          <span class="signature">&#8594; Type</span>         
         </dt>
         <dd>
-          
-                  <div class="features">read / write</div>
+          A type that this Parser is associated with.
+                  <div class="features">read-only, override</div>
 </dd>
         <dt id="associatedTypeSymbol" class="property">
           <span class="name"><a href="mirror_json/ClassParser/associatedTypeSymbol.html">associatedTypeSymbol</a></span>
           <span class="signature">&#8594; Symbol</span>         
         </dt>
         <dd>
-          
+          Symbol of the <a href="mirror_json/ClassParser/associatedType.html">associatedType</a>.
                   <div class="features">read-only, override</div>
-</dd>
-        <dt id="classTypeMirror" class="property">
-          <span class="name"><a href="mirror_json/ClassParser/classTypeMirror.html">classTypeMirror</a></span>
-          <span class="signature">&#8596; ClassMirror</span>         
-        </dt>
-        <dd>
-          
-                  <div class="features">read / write</div>
 </dd>
         <dt id="hashCode" class="property inherited">
           <span class="name"><a href="mirror_json/Parser/hashCode.html">hashCode</a></span>
@@ -170,7 +165,7 @@
           </span>
                   </dt>
         <dd>
-          
+          Create an instance of <strong>T</strong> from JSON.
                   <div class="features">override</div>
 </dd>
         <dt id="toJson" class="callable">
@@ -179,7 +174,7 @@
           </span>
                   </dt>
         <dd>
-          
+          Convert an instance of <strong>T</strong> to JSON.
                   <div class="features">override</div>
 </dd>
         <dt id="noSuchMethod" class="callable inherited">
@@ -232,9 +227,8 @@
       <li class="section-title">
         <a href="mirror_json/ClassParser-class.html#instance-properties">Properties</a>
       </li>
-      <li><a href="mirror_json/ClassParser/actions.html">actions</a></li>
+      <li><a href="mirror_json/ClassParser/associatedType.html">associatedType</a></li>
       <li><a href="mirror_json/ClassParser/associatedTypeSymbol.html">associatedTypeSymbol</a></li>
-      <li><a href="mirror_json/ClassParser/classTypeMirror.html">classTypeMirror</a></li>
       <li class="inherited"><a href="mirror_json/Parser/hashCode.html">hashCode</a></li>
       <li class="inherited"><a href="mirror_json/Parser/runtimeType.html">runtimeType</a></li>
     
@@ -256,7 +250,7 @@
 
 <footer>
   <span class="no-break">
-    mirror_json 0.0.2
+    mirror_json 0.0.3
   </span>
 
   

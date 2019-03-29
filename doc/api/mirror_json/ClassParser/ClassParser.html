@@ -60,9 +60,8 @@
       <li class="section-title">
         <a href="mirror_json/ClassParser-class.html#instance-properties">Properties</a>
       </li>
-      <li><a href="mirror_json/ClassParser/actions.html">actions</a></li>
+      <li><a href="mirror_json/ClassParser/associatedType.html">associatedType</a></li>
       <li><a href="mirror_json/ClassParser/associatedTypeSymbol.html">associatedTypeSymbol</a></li>
-      <li><a href="mirror_json/ClassParser/classTypeMirror.html">classTypeMirror</a></li>
       <li class="inherited"><a href="mirror_json/Parser/hashCode.html">hashCode</a></li>
       <li class="inherited"><a href="mirror_json/Parser/runtimeType.html">runtimeType</a></li>
     
@@ -85,19 +84,19 @@
 
     <section class="multi-line-signature">
       
-      <span class="name ">ClassParser&lt;<wbr><span class="type-parameter">T</span>&gt;</span>(<wbr>{<span class="parameter" id="-param-preheat"><span class="type-annotation">bool</span> <span class="parameter-name">preheat</span>: <span class="default-value">true</span>, </span> <span class="parameter" id="-param-register"><span class="type-annotation">bool</span> <span class="parameter-name">register</span>: <span class="default-value">true</span></span> })
+      <span class="name ">ClassParser&lt;<wbr><span class="type-parameter">T</span>&gt;</span>(<wbr>{<span class="parameter" id="-param-bake"><span class="type-annotation">bool</span> <span class="parameter-name">bake</span>: <span class="default-value">true</span>, </span> <span class="parameter" id="-param-register"><span class="type-annotation">bool</span> <span class="parameter-name">register</span>: <span class="default-value">true</span></span> })
     </section>
 
     
     <section class="summary source-code" id="source">
       <h2><span>Implementation</span></h2>
-      <pre class="language-dart"><code class="language-dart">ClassParser({bool preheat = true, bool register = true}) {
-  classTypeMirror = reflectClass(T);
+      <pre class="language-dart"><code class="language-dart">ClassParser({bool bake = true, bool register = true}) {
+  _classTypeMirror = reflectClass(T);
 
-  if (preheat) {
+  if (bake) {
     if (register) GlobalJsonParserInstance.queueParser(associatedTypeSymbol);
 
-    _preheat();
+    _bake();
 
     if (register) GlobalJsonParserInstance.addParser(this);
   }
@@ -113,7 +112,7 @@
 
 <footer>
   <span class="no-break">
-    mirror_json 0.0.2
+    mirror_json 0.0.3
   </span>
 
   

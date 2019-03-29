@@ -3,6 +3,7 @@ import '../annotations/parseable_annotation.dart';
 import 'parser.dart';
 import 'dart:mirrors';
 
+/// An action to perform with some field in a class.
 class ClassParserAction {
   String fieldName;
   Symbol symbol;
@@ -28,15 +29,16 @@ class ClassParserAction {
   }
 }
 
+/// A ready-to-use parser for classes. See [Parser] for more info.
 class ClassParser<T> extends Parser<T> {
-  ClassMirror classTypeMirror;
-  Map<Symbol, ClassParserAction> actions;
+  ClassMirror _classTypeMirror;
+  Map<Symbol, ClassParserAction> _actions;
 
   @override
-  get associatedType => classTypeMirror.reflectedType;
+  get associatedType => _classTypeMirror.reflectedType;
 
   @override
-  Symbol get associatedTypeSymbol => classTypeMirror.simpleName;
+  Symbol get associatedTypeSymbol => _classTypeMirror.simpleName;
 
   factory ClassParser.fromType(Type R) {
     var mirror = reflectType(ClassParser, [R]);
@@ -44,13 +46,13 @@ class ClassParser<T> extends Parser<T> {
     return instanceMirror.reflectee;
   }
 
-  ClassParser({bool preheat = true, bool register = true}) {
-    classTypeMirror = reflectClass(T);
+  ClassParser({bool bake = true, bool register = true}) {
+    _classTypeMirror = reflectClass(T);
 
-    if (preheat) {
+    if (bake) {
       if (register) GlobalJsonParserInstance.queueParser(associatedTypeSymbol);
 
-      _preheat();
+      _bake();
 
       if (register) GlobalJsonParserInstance.addParser(this);
     }
@@ -65,14 +67,14 @@ class ClassParser<T> extends Parser<T> {
     Symbol typeName = mirror.type.simpleName;
 
     if (GlobalJsonParserInstance.hasParser(typeName)) {
-      actions[name] = ClassParserAction(
+      _actions[name] = ClassParserAction(
         parserSymbol: typeName,
         symbol: name,
         typeArgument: mirror.type.reflectedType,
       );
     } else if (mirror.type is ClassMirror && _isParseable(mirror.type)) {
       ClassParser.fromType(mirror.type.reflectedType);
-      actions[name] = ClassParserAction(
+      _actions[name] = ClassParserAction(
         parserSymbol: typeName,
         symbol: name,
         typeArgument: mirror.type.reflectedType,
@@ -80,10 +82,10 @@ class ClassParser<T> extends Parser<T> {
     }
   }
 
-  void _preheat() {
-    actions = {};
+  void _bake() {
+    _actions = {};
 
-    for (var mirror in classTypeMirror.declarations.values) {
+    for (var mirror in _classTypeMirror.declarations.values) {
       if (mirror is VariableMirror) {
         _preheatVariable(mirror);
       }
@@ -93,7 +95,7 @@ class ClassParser<T> extends Parser<T> {
   @override
   T fromJson(json, {Symbol typeArgumentSymbol, Type type}) {
     InstanceMirror mirror = (reflectType(T) as ClassMirror).newInstance(Symbol(''), []);
-    actions.forEach((name, action) {
+    _actions.forEach((name, action) {
       var data = json[action.fieldName];
       mirror.setField(name, action.fromJson(data));
     });
@@ -104,7 +106,7 @@ class ClassParser<T> extends Parser<T> {
   toJson(T data, {Symbol typeArgumentSymbol, Type type}) {
     InstanceMirror mirror = reflect(data);
     Map json = {};
-    actions.forEach((name, action) {
+    _actions.forEach((name, action) {
       var data = mirror.getField(name).reflectee;
       json[action.fieldName] = action.toJson(data);
     });

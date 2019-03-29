@@ -77,6 +77,7 @@
       <li><a href="mirror_json/GlobalJsonParserInstance/addParser.html">addParser</a></li>
       <li><a href="mirror_json/GlobalJsonParserInstance/dequeueParser.html">dequeueParser</a></li>
       <li><a href="mirror_json/GlobalJsonParserInstance/getParser.html">getParser</a></li>
+      <li><a href="mirror_json/GlobalJsonParserInstance/getParserByType.html">getParserByType</a></li>
       <li><a href="mirror_json/GlobalJsonParserInstance/hasParser.html">hasParser</a></li>
       <li><a href="mirror_json/GlobalJsonParserInstance/initialize.html">initialize</a></li>
       <li><a href="mirror_json/GlobalJsonParserInstance/queueParser.html">queueParser</a></li>
@@ -92,6 +93,11 @@
             <span class="name ">initialize</span>
 (<wbr>{<span class="parameter" id="initialize-param-includeBasicParsers"><span class="type-annotation">bool</span> <span class="parameter-name">includeBasicParsers</span>: <span class="default-value">true</span></span> })
       
+    </section>
+    <section class="desc markdown">
+      <p>Initialize the parser.</p>
+<p>If <code>includeBasicParsers</code> is true, it will automatically add all parsers under <code>parsers/basic</code>,
+such as <a href="mirror_json/BoolParser-class.html">BoolParser</a>, <a href="mirror_json/DoubleParser-class.html">DoubleParser</a>, etc.</p>
     </section>
     
     <section class="summary source-code" id="source">
@@ -121,7 +127,7 @@
 
 <footer>
   <span class="no-break">
-    mirror_json 0.0.2
+    mirror_json 0.0.3
   </span>
 
   

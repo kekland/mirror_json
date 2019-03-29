@@ -1,9 +1,10 @@
 import '../parser.dart';
 
+/// A ready-to-use parser. See [Parser] for more info.
 class StringParser extends Parser<String> {
   @override
   get associatedType => String;
-  
+
   @override
   get associatedTypeSymbol => #String;
 

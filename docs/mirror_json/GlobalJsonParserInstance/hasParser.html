@@ -77,6 +77,7 @@
       <li><a href="mirror_json/GlobalJsonParserInstance/addParser.html">addParser</a></li>
       <li><a href="mirror_json/GlobalJsonParserInstance/dequeueParser.html">dequeueParser</a></li>
       <li><a href="mirror_json/GlobalJsonParserInstance/getParser.html">getParser</a></li>
+      <li><a href="mirror_json/GlobalJsonParserInstance/getParserByType.html">getParserByType</a></li>
       <li><a href="mirror_json/GlobalJsonParserInstance/hasParser.html">hasParser</a></li>
       <li><a href="mirror_json/GlobalJsonParserInstance/initialize.html">initialize</a></li>
       <li><a href="mirror_json/GlobalJsonParserInstance/queueParser.html">queueParser</a></li>
@@ -92,6 +93,11 @@
             <span class="name ">hasParser</span>
 (<wbr><span class="parameter" id="hasParser-param-symbol"><span class="type-annotation">Symbol</span> <span class="parameter-name">symbol</span>, {</span> <span class="parameter" id="hasParser-param-allowQueued"><span class="type-annotation">bool</span> <span class="parameter-name">allowQueued</span>: <span class="default-value">true</span></span> })
       
+    </section>
+    <section class="desc markdown">
+      <p>Does parser with <code>symbol</code> as its associated symbol exist?</p>
+<p>If <code>allowQueued</code> is true, returns true if there is such a parser in
+queue.</p>
     </section>
     
     <section class="summary source-code" id="source">
@@ -110,7 +116,7 @@
 
 <footer>
   <span class="no-break">
-    mirror_json 0.0.2
+    mirror_json 0.0.3
   </span>
 
   

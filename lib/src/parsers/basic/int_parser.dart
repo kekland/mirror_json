@@ -1,5 +1,6 @@
 import '../parser.dart';
 
+/// A ready-to-use parser. See [Parser] for more info.
 class IntParser extends Parser<int> {
   @override
   get associatedType => int;

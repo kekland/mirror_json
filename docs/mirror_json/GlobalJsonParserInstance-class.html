@@ -78,6 +78,9 @@
   <div id="dartdoc-main-content" class="col-xs-12 col-sm-9 col-md-8 main-content">
       <div><h1>GlobalJsonParserInstance class </h1></div>
 
+    <section class="desc markdown">
+      <p>This class holds all the current <a href="mirror_json/Parser-class.html">Parser</a>s and manages them.</p>
+    </section>
     
 
     <section class="summary offset-anchor" id="constructors">
@@ -164,7 +167,7 @@
           <span class="signature">&#8596; Map<span class="signature">&lt;<wbr><span class="type-parameter">Symbol</span>, <span class="type-parameter"><a href="mirror_json/Parser-class.html">Parser</a></span>&gt;</span></span>         
         </dt>
         <dd>
-          
+          Map of baked parsers, where the key for every parser is their type's symbol.
                   <div class="features">read / write</div>
 </dd>
         <dt id="queuedParsers" class="property">
@@ -172,7 +175,7 @@
           <span class="signature">&#8596; List<span class="signature">&lt;<wbr><span class="type-parameter">Symbol</span>&gt;</span></span>         
         </dt>
         <dd>
-          
+          List of queued (non-baked, but ready to be baked) parsers. <a href="mirror_json/GlobalJsonParserInstance/queuedParsers.html">[...]</a>
                   <div class="features">read / write</div>
 </dd>
       </dl>
@@ -187,7 +190,7 @@
           </span>
                   </dt>
         <dd>
-          
+          Add a parser to the map.
                   
 </dd>
         <dt id="dequeueParser" class="callable">
@@ -196,7 +199,7 @@
           </span>
                   </dt>
         <dd>
-          
+          Remove a parser from queue list. <a href="mirror_json/GlobalJsonParserInstance/dequeueParser.html">[...]</a>
                   
 </dd>
         <dt id="getParser" class="callable">
@@ -205,7 +208,16 @@
           </span>
                   </dt>
         <dd>
-          
+          Get a parser with <code>symbol</code> as its associated symbol. <a href="mirror_json/GlobalJsonParserInstance/getParser.html">[...]</a>
+                  
+</dd>
+        <dt id="getParserByType" class="callable">
+          <span class="name"><a href="mirror_json/GlobalJsonParserInstance/getParserByType.html">getParserByType</a></span><span class="signature">(<wbr><span class="parameter" id="getParserByType-param-type"><span class="type-annotation">Type</span> <span class="parameter-name">type</span></span>)
+            <span class="returntype parameter">&#8594; <a href="mirror_json/Parser-class.html">Parser</a></span>
+          </span>
+                  </dt>
+        <dd>
+          Get a parser with <code>type</code> as its associated type. <a href="mirror_json/GlobalJsonParserInstance/getParserByType.html">[...]</a>
                   
 </dd>
         <dt id="hasParser" class="callable">
@@ -214,7 +226,7 @@
           </span>
                   </dt>
         <dd>
-          
+          Does parser with <code>symbol</code> as its associated symbol exist? <a href="mirror_json/GlobalJsonParserInstance/hasParser.html">[...]</a>
                   
 </dd>
         <dt id="initialize" class="callable">
@@ -223,7 +235,7 @@
           </span>
                   </dt>
         <dd>
-          
+          Initialize the parser. <a href="mirror_json/GlobalJsonParserInstance/initialize.html">[...]</a>
                   
 </dd>
         <dt id="queueParser" class="callable">
@@ -232,7 +244,7 @@
           </span>
                   </dt>
         <dd>
-          
+          Queue an unbaked parser. <a href="mirror_json/GlobalJsonParserInstance/queueParser.html">[...]</a>
                   
 </dd>
       </dl>
@@ -267,6 +279,7 @@
       <li><a href="mirror_json/GlobalJsonParserInstance/addParser.html">addParser</a></li>
       <li><a href="mirror_json/GlobalJsonParserInstance/dequeueParser.html">dequeueParser</a></li>
       <li><a href="mirror_json/GlobalJsonParserInstance/getParser.html">getParser</a></li>
+      <li><a href="mirror_json/GlobalJsonParserInstance/getParserByType.html">getParserByType</a></li>
       <li><a href="mirror_json/GlobalJsonParserInstance/hasParser.html">hasParser</a></li>
       <li><a href="mirror_json/GlobalJsonParserInstance/initialize.html">initialize</a></li>
       <li><a href="mirror_json/GlobalJsonParserInstance/queueParser.html">queueParser</a></li>
@@ -278,7 +291,7 @@
 
 <footer>
   <span class="no-break">
-    mirror_json 0.0.2
+    mirror_json 0.0.3
   </span>
 
   

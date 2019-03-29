@@ -2,6 +2,7 @@ import 'dart:mirrors';
 import 'package:mirror_json/src/global_instance.dart';
 import '../parser.dart';
 
+/// A ready-to-use parser. See [Parser] for more info.
 class ListParser extends Parser<List> {
   @override
   get associatedType => List;

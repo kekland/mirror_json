@@ -23,7 +23,7 @@
 <header id="title">
   <button id="sidenav-left-toggle" type="button">&nbsp;</button>
   <ol class="breadcrumbs gt-separated dark hidden-xs">
-    <li><a href="https://kekland.github.com/mirror_json">mirror_json package</a></li>
+    <li><a href="https://kekland.github.io/mirror_json">mirror_json package</a></li>
   </ol>
   <div class="self-name">mirror_json</div>
   <form class="search navbar-right" role="search">
@@ -41,7 +41,7 @@
     </header>
     
     <ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
-      <li><a href="https://kekland.github.com/mirror_json">mirror_json package</a></li>
+      <li><a href="https://kekland.github.io/mirror_json">mirror_json package</a></li>
     </ol>
     
     <h5 class="hidden-xs"><span class="package-name">mirror_json</span> <span class="package-kind">package</span></h5>
@@ -53,22 +53,49 @@
 
   <div id="dartdoc-main-content" class="col-xs-12 col-sm-9 col-md-8 main-content">
       <section class="desc markdown">
-        <h1 id="mirror_json">mirror_json</h1>
+        <h1 id="-mirror_json">✨ mirror_json</h1>
 <p><a href="https://github.com/kekland/mirror_json"><img alt="star this repo" src="https://githubbadges.com/star.svg?user=kekland&amp;repo=mirror_json&amp;style=flat"></a>
-<a href="https://github.com/kekland/mirror_json/fork"><img alt="fork this repo" src="https://githubbadges.com/fork.svg?user=kekland&amp;repo=mirror_json&amp;style=flat"></a></p>
+<a href="https://github.com/kekland/mirror_json/fork"><img alt="fork this repo" src="https://githubbadges.com/fork.svg?user=kekland&amp;repo=mirror_json&amp;style=flat"></a>
+<img alt="Build" src="https://img.shields.io/travis/kekland/mirror_json.svg">
+<img alt="Pub" src="https://img.shields.io/pub/v/mirror_json.svg"></p>
 <p>A <strong>Dart</strong> library for parsing JSON objects using <code>dart:mirrors</code>.</p>
-<p><strong>Important: This library does not work on Flutter or Web.</strong></p>
-<h2 id="installation">Installation</h2>
+<p><strong>Important: This library does not work in Flutter.</strong></p>
+<h2 id="-installation">🔨 Installation</h2>
 <p>Add <a href="https://pub.dartlang.org/packages/mirror_json"><code>mirror_json</code></a> to your dependencies.</p>
 <pre class="language-yaml"><code class="language-yaml">dependencies:
     ...
     mirror_json:
 </code></pre>
-<h2 id="example">Example</h2>
-<p><em>soon...</em></p>
-<h2 id="docs">Docs</h2>
-<p><em>soon...</em></p>
-<h2 id="contact-me">Contact me</h2>
+<p>Now get the packages.</p>
+<pre class="language-bash"><code class="language-bash">pub get
+</code></pre>
+<h2 id="-getting-started">🔮 Getting started</h2>
+<p><code>mirror_json</code> uses a concept of <em>Parsers</em>. There are a bunch of parsers for simple types (int, double, String) already in the package, but in order to parse a class, you have to make a <code>ClassParser</code> instance.</p>
+<pre class="language-dart"><code class="language-dart">import 'package:mirror_json/mirror_json.dart';
+
+@JsonParseable()
+class MyClass {
+...
+}
+
+void main() {
+    GlobalJsonParserInstance.initialize();
+    var parser = ClassParser&lt;MyClass&gt;();
+
+    // From json
+    var myObject = parser.fromJson({...});
+
+    // To json
+    var json = parser.toJson(myObject);
+}
+</code></pre>
+<p>Woah, what just happened?</p>
+<p>First, we initialized <code>mirror_json</code>'s main class, <code>GlobalJsonParserInstance</code>. Then, we created a parser for <code>MyClass</code>. Now you can use the parser to transform your JSON objects to <code>MyClass</code> instances or <code>MyClass</code> objects to JSON.</p>
+<h2 id="-example">💡 Example</h2>
+<p>See example under <code>example</code> folder.</p>
+<h2 id="-docs">📚 Docs</h2>
+<p>See docs <a href="https://kekland.github.io/mirror_json"><strong>here</strong></a></p>
+<h2 id="-contact-me">📭 Contact me</h2>
 <p>E-Mail: <strong>kk.erzhan@gmail.com</strong></p>
       </section>
       
@@ -92,7 +119,7 @@
 
 <footer>
   <span class="no-break">
-    mirror_json 0.0.2
+    mirror_json 0.0.3
   </span>
 
   
