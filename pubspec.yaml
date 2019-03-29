@@ -1,7 +1,7 @@
 name: mirror_json
 description: A Dart library for parsing JSON objects using reflection (dart:mirrors). Does not support Flutter.
 homepage: https://kekland.github.io/mirror_json
-version: 0.0.2
+version: 0.0.3
 author: Erzhan <kk.erzhan@gmail.com>
 
 environment:
