@@ -1,3 +1,4 @@
 .vscode/
 dist/
 .idea/
+.dart_tool/
