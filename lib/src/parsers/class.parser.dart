@@ -1,5 +1,5 @@
+import 'package:json_parser/src/global_instance.dart';
 import '../annotations/parseable.annotation.dart';
-import '../json_parser.dart';
 import 'parser.dart';
 import 'dart:mirrors';
 

@@ -1,6 +1,5 @@
 import 'dart:mirrors';
-
-import '../../json_parser.dart';
+import 'package:json_parser/src/global_instance.dart';
 import '../parser.dart';
 
 class ListParser extends Parser<List> {
