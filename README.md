@@ -5,7 +5,7 @@
 
 A **Dart** library for parsing JSON objects using `dart:mirrors`.
 
-**Important: This library does not work on Flutter or Web.**
+**Important: This library does not work in Flutter.**
 
 ## Installation
 
