@@ -6,7 +6,7 @@ class BoolParser extends Parser<bool> {
 
   @override
   bool fromJson(dynamic data, {Symbol typeArgumentSymbol, Type type}) {
-    if(data is bool) {
+    if (data is bool) {
       return data;
     }
     return null;

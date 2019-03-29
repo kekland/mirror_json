@@ -6,7 +6,7 @@ class IntParser extends Parser<int> {
 
   @override
   int fromJson(dynamic data, {Symbol typeArgumentSymbol, Type type}) {
-    if(data is num) {
+    if (data is num) {
       return data.toInt();
     }
     return null;

@@ -6,7 +6,7 @@ class DoubleParser extends Parser<double> {
 
   @override
   double fromJson(dynamic data, {Symbol typeArgumentSymbol, Type type}) {
-    if(data is num) {
+    if (data is num) {
       return data.toDouble();
     }
     return null;

@@ -1,4 +1,3 @@
-
 import '../parser.dart';
 
 class DynamicParser extends Parser<dynamic> {

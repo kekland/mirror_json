@@ -6,7 +6,7 @@ class StringParser extends Parser<String> {
 
   @override
   String fromJson(dynamic data, {Symbol typeArgumentSymbol, Type type}) {
-    if(data is String) {
+    if (data is String) {
       return data;
     }
     return null;

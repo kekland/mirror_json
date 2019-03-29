@@ -6,7 +6,7 @@ class NumParser extends Parser<num> {
 
   @override
   num fromJson(dynamic data, {Symbol typeArgumentSymbol, Type type}) {
-    if(data is num) {
+    if (data is num) {
       return data;
     }
     return null;
