@@ -1,3 +1,5 @@
 name: json_parser
-version: 0.0.1
-author: kekalnd
+version: 0.0.2
+author: kekland
+dev_dependencies:
+  test:
