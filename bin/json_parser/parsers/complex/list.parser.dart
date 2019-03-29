@@ -10,14 +10,16 @@ class ListParser extends Parser<List> {
   @override
   List fromJson(dynamic data, {Symbol typeArgumentSymbol, Type type}) {
     if (data is List) {
-      print(typeArgumentSymbol);
-      var mirror = (reflectType(List, [type]) as ClassMirror).newInstance(Symbol(''), []);
+      var typeMirror = reflectType(type);
+      var mirror = (reflectType(type) as ClassMirror).newInstance(Symbol(''), []);
+      var argumentType = typeMirror.typeArguments.length > 0 ? typeMirror.typeArguments.first : null;
+
       data.forEach((obj) {
-        var parser = GlobalJsonParserInstance.getParser(typeArgumentSymbol);
+        var parser = GlobalJsonParserInstance.getParser(argumentType.simpleName);
         mirror.reflectee.add(parser.fromJson(
           obj,
-          typeArgumentSymbol: typeArgumentSymbol,
-          type: type,
+          typeArgumentSymbol: argumentType.simpleName,
+          type: argumentType.reflectedType,
         ));
       });
       return mirror.reflectee;
@@ -27,16 +29,18 @@ class ListParser extends Parser<List> {
 
   @override
   toJson(List data, {Symbol typeArgumentSymbol, Type type}) {
-    List returnData = [];
+    List returnList = [];
+    var typeMirror = reflectType(type);
+    var argumentType = typeMirror.typeArguments.length > 0 ? typeMirror.typeArguments.first : null;
 
     data.forEach((obj) {
-      returnData.add(GlobalJsonParserInstance.getParser(typeArgumentSymbol).toJson(
+      var parser = GlobalJsonParserInstance.getParser(argumentType.simpleName);
+      returnList.add(parser.toJson(
         obj,
-        typeArgumentSymbol: typeArgumentSymbol,
-        type: type,
+        typeArgumentSymbol: argumentType.simpleName,
+        type: argumentType.reflectedType,
       ));
     });
-
-    return returnData;
+    return returnList;
   }
 }

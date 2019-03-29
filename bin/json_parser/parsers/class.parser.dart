@@ -14,7 +14,7 @@ class ClassParserAction {
   ClassParserAction({this.symbol, this.parserSymbol, this.typeArgument}) {
     this.parser = GlobalJsonParserInstance.getParser(parserSymbol);
     this.fieldName = MirrorSystem.getName(symbol);
-    if(this.typeArgument != null) {
+    if (this.typeArgument != null) {
       this.typeArgumentSymbol = reflectType(this.typeArgument).simpleName;
     }
   }
@@ -65,14 +65,14 @@ class ClassParser<T> extends Parser<T> {
       actions[name] = ClassParserAction(
         parserSymbol: typeName,
         symbol: name,
-        typeArgument: (mirror.type.typeArguments.length > 0)? mirror.type.typeArguments.first.reflectedType : null, 
+        typeArgument: mirror.type.reflectedType,
       );
     } else if (mirror.type is ClassMirror && _isParseable(mirror.type)) {
       ClassParser.fromType(mirror.type.reflectedType);
       actions[name] = ClassParserAction(
         parserSymbol: typeName,
         symbol: name,
-        typeArgument: (mirror.type.typeArguments.length > 0)? mirror.type.typeArguments.first.reflectedType : null, 
+        typeArgument: mirror.type.reflectedType,
       );
     }
   }
