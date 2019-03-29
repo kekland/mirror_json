@@ -1,4 +1,4 @@
-import 'package:json_parser/json_parser.dart';
+import 'package:mirror_json/mirror_json.dart';
 import 'package:test/test.dart';
 
 void main() {

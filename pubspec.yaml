@@ -1,4 +1,4 @@
-name: json_parser
+name: mirror_json
 version: 0.0.2
 author: kekland
 dev_dependencies:

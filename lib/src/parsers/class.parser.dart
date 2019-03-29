@@ -1,4 +1,4 @@
-import 'package:json_parser/src/global_instance.dart';
+import 'package:mirror_json/src/global_instance.dart';
 import '../annotations/parseable.annotation.dart';
 import 'parser.dart';
 import 'dart:mirrors';
