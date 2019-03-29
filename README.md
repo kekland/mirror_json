@@ -22,7 +22,7 @@ dependencies:
 
 ## Docs
 
-*soon...*
+See docs [**here**](https://kekland.github.io/mirror_json)
 
 ## Contact me
 
