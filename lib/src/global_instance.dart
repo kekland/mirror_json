@@ -1,3 +1,5 @@
+import 'dart:mirrors';
+
 import 'parsers/complex/list_parser.dart';
 import 'parsers/parser.dart';
 import 'parsers/basic/basic_parser.dart';
@@ -80,5 +82,34 @@ class GlobalJsonParserInstance {
   /// Returns `null` if none exist.
   static Parser getParserByType(Type type) {
     return parsers.values.firstWhere((parser) => parser.associatedType == type);
+  }
+}
+
+/// A class for convenience JSON features.
+/// 
+/// Adds methods like `.toJson()`, `.fromJson()`.
+class Json {
+  /// Convert a JSON object (Map, List) to an instance of [T].
+  /// 
+  /// Throws if no parser for [T] was found.
+  static T fromJson<T>(dynamic json) {
+    Parser<T> parser = GlobalJsonParserInstance.getParserByType(T);
+    if(parser == null) {
+      throw new Exception('Parser for ${T} was not initialized.');
+    }
+    return parser.fromJson(json);
+  }
+  
+  /// Convert an object to a JSON object (Map, List).
+  /// 
+  /// Throws if no parser for [object]'s type was found..
+  static dynamic toJson(dynamic object) {
+    Parser parser = GlobalJsonParserInstance.getParserByType(object.runtimeType);
+
+    if(parser == null) {
+      throw new Exception('Parser for ${object.runtimeType} was not initialized.');
+    }
+
+    return parser.toJson(object);
   }
 }

@@ -46,10 +46,10 @@ class ClassParser<T> extends Parser<T> {
     return instanceMirror.reflectee;
   }
 
-  ClassParser({bool bake = true, bool register = true}) {
+  ClassParser({bool preheat = true, bool register = true}) {
     _classTypeMirror = reflectClass(T);
 
-    if (bake) {
+    if (preheat) {
       if (register) GlobalJsonParserInstance.queueParser(associatedTypeSymbol);
 
       _bake();
