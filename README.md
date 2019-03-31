@@ -32,7 +32,7 @@ import 'package:mirror_json/mirror_json.dart';
 
 @JsonParseable()
 class MyClass {
-...
+    ...
 }
 
 void main() {
@@ -40,16 +40,16 @@ void main() {
     var parser = ClassParser<MyClass>();
 
     // From json
-    var myObject = parser.fromJson({...});
+    var myObject = Json.fromJson({...});
 
     // To json
-    var json = parser.toJson(myObject);
+    var json = Json.toJson(myObject);
 }
 ```
 
 Woah, what just happened?
 
-First, we initialized `mirror_json`'s main class, `GlobalJsonParserInstance`. Then, we created a parser for `MyClass`. Now you can use the parser to transform your JSON objects to `MyClass` instances or `MyClass` objects to JSON.
+First, we initialized `mirror_json`'s main class, `GlobalJsonParserInstance`. This automatically adds parsers for simple types like int, double, List, etc. Then, we created a parser for `MyClass`. Now you can use the `Json` class to transform your JSON objects to `MyClass` instances or `MyClass` objects to JSON.
 
 ## 💡 Example
 
