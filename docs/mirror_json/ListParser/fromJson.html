@@ -89,7 +89,7 @@
       </div>
       <span class="returntype">List</span>
             <span class="name ">fromJson</span>
-(<wbr><span class="parameter" id="fromJson-param-data"><span class="type-annotation">dynamic</span> <span class="parameter-name">data</span>, {</span> <span class="parameter" id="fromJson-param-typeArgumentSymbol"><span class="type-annotation">Symbol</span> <span class="parameter-name">typeArgumentSymbol</span>, </span> <span class="parameter" id="fromJson-param-type"><span class="type-annotation">Type</span> <span class="parameter-name">type</span></span> })
+(<wbr><span class="parameter" id="fromJson-param-data"><span class="type-annotation">dynamic</span> <span class="parameter-name">data</span>, {</span> <span class="parameter" id="fromJson-param-typeSymbol"><span class="type-annotation">Symbol</span> <span class="parameter-name">typeSymbol</span>, </span> <span class="parameter" id="fromJson-param-type"><span class="type-annotation">Type</span> <span class="parameter-name">type</span></span> })
       <div class="features">override</div>
     </section>
     <section class="desc markdown">
@@ -99,7 +99,7 @@
     <section class="summary source-code" id="source">
       <h2><span>Implementation</span></h2>
       <pre class="language-dart"><code class="language-dart">@override
-List fromJson(dynamic data, {Symbol typeArgumentSymbol, Type type}) {
+List fromJson(dynamic data, {Symbol typeSymbol, Type type}) {
   if (data is List) {
     var typeMirror = reflectType(type);
     var mirror = (reflectType(type) as ClassMirror).newInstance(Symbol(&#39;&#39;), []);
@@ -109,7 +109,7 @@ List fromJson(dynamic data, {Symbol typeArgumentSymbol, Type type}) {
       var parser = GlobalJsonParserInstance.getParser(argumentType.simpleName);
       mirror.reflectee.add(parser.fromJson(
         obj,
-        typeArgumentSymbol: argumentType.simpleName,
+        typeSymbol: argumentType.simpleName,
         type: argumentType.reflectedType,
       ));
     });
@@ -128,7 +128,7 @@ List fromJson(dynamic data, {Symbol typeArgumentSymbol, Type type}) {
 
 <footer>
   <span class="no-break">
-    mirror_json 0.0.3
+    mirror_json 0.1.1
   </span>
 
   

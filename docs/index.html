@@ -75,7 +75,7 @@
 
 @JsonParseable()
 class MyClass {
-...
+    ...
 }
 
 void main() {
@@ -83,14 +83,14 @@ void main() {
     var parser = ClassParser&lt;MyClass&gt;();
 
     // From json
-    var myObject = parser.fromJson({...});
+    var myObject = Json.fromJson({...});
 
     // To json
-    var json = parser.toJson(myObject);
+    var json = Json.toJson(myObject);
 }
 </code></pre>
 <p>Woah, what just happened?</p>
-<p>First, we initialized <code>mirror_json</code>'s main class, <code>GlobalJsonParserInstance</code>. Then, we created a parser for <code>MyClass</code>. Now you can use the parser to transform your JSON objects to <code>MyClass</code> instances or <code>MyClass</code> objects to JSON.</p>
+<p>First, we initialized <code>mirror_json</code>'s main class, <code>GlobalJsonParserInstance</code>. This automatically adds parsers for simple types like int, double, List, etc. Then, we created a parser for <code>MyClass</code>. Now you can use the <code>Json</code> class to transform your JSON objects to <code>MyClass</code> instances or <code>MyClass</code> objects to JSON.</p>
 <h2 id="-example">💡 Example</h2>
 <p>See example under <code>example</code> folder.</p>
 <h2 id="-docs">📚 Docs</h2>
@@ -119,7 +119,7 @@ void main() {
 
 <footer>
   <span class="no-break">
-    mirror_json 0.0.3
+    mirror_json 0.1.1
   </span>
 
   

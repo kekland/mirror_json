@@ -90,7 +90,7 @@
       </div>
       <span class="returntype">T</span>
             <span class="name ">fromJson</span>
-(<wbr><span class="parameter" id="fromJson-param-json"><span class="type-annotation">dynamic</span> <span class="parameter-name">json</span>, {</span> <span class="parameter" id="fromJson-param-typeArgumentSymbol"><span class="type-annotation">Symbol</span> <span class="parameter-name">typeArgumentSymbol</span>, </span> <span class="parameter" id="fromJson-param-type"><span class="type-annotation">Type</span> <span class="parameter-name">type</span></span> })
+(<wbr><span class="parameter" id="fromJson-param-json"><span class="type-annotation">dynamic</span> <span class="parameter-name">json</span>, {</span> <span class="parameter" id="fromJson-param-typeSymbol"><span class="type-annotation">Symbol</span> <span class="parameter-name">typeSymbol</span>, </span> <span class="parameter" id="fromJson-param-type"><span class="type-annotation">Type</span> <span class="parameter-name">type</span></span> })
       <div class="features">override</div>
     </section>
     <section class="desc markdown">
@@ -100,7 +100,7 @@
     <section class="summary source-code" id="source">
       <h2><span>Implementation</span></h2>
       <pre class="language-dart"><code class="language-dart">@override
-T fromJson(json, {Symbol typeArgumentSymbol, Type type}) {
+T fromJson(json, {Symbol typeSymbol, Type type}) {
   InstanceMirror mirror = (reflectType(T) as ClassMirror).newInstance(Symbol(&#39;&#39;), []);
   _actions.forEach((name, action) {
     var data = json[action.fieldName];
@@ -119,7 +119,7 @@ T fromJson(json, {Symbol typeArgumentSymbol, Type type}) {
 
 <footer>
   <span class="no-break">
-    mirror_json 0.0.3
+    mirror_json 0.1.1
   </span>
 
   

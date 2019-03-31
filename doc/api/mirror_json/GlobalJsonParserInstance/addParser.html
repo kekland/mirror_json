@@ -91,7 +91,7 @@
     <section class="multi-line-signature">
       <span class="returntype">void</span>
             <span class="name ">addParser</span>
-(<wbr><span class="parameter" id="addParser-param-parser"><span class="type-annotation"><a href="mirror_json/Parser-class.html">Parser</a></span> <span class="parameter-name">parser</span></span>)
+(<wbr><span class="parameter" id="addParser-param-parser"><span class="type-annotation"><a href="mirror_json/Parser-class.html">Parser</a></span> <span class="parameter-name">parser</span>, [</span> <span class="parameter" id="addParser-param-aliases"><span class="type-annotation">List<span class="signature">&lt;<wbr><span class="type-parameter">Symbol</span>&gt;</span></span> <span class="parameter-name">aliases</span></span> ])
       
     </section>
     <section class="desc markdown">
@@ -100,8 +100,13 @@
     
     <section class="summary source-code" id="source">
       <h2><span>Implementation</span></h2>
-      <pre class="language-dart"><code class="language-dart">static void addParser(Parser parser) {
+      <pre class="language-dart"><code class="language-dart">static void addParser(Parser parser, [List&lt;Symbol&gt; aliases]) {
   parsers.putIfAbsent(parser.associatedTypeSymbol, () =&gt; parser);
+  if (aliases != null) {
+    for (var alias in aliases) {
+      parsers.putIfAbsent(alias, () =&gt; parser);
+    }
+  }
   dequeueParser(parser.associatedTypeSymbol);
 }</code></pre>
     </section>
@@ -115,7 +120,7 @@
 
 <footer>
   <span class="no-break">
-    mirror_json 0.0.3
+    mirror_json 0.1.1
   </span>
 
   

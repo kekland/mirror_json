@@ -92,7 +92,7 @@
       <h2><span>Implementation</span></h2>
       <pre class="language-dart"><code class="language-dart">factory ClassParser.fromType(Type R) {
   var mirror = reflectType(ClassParser, [R]);
-  var instanceMirror = (mirror as ClassMirror).newInstance(Symbol(&#39;&#39;), [], {#preheat: true, #register: true});
+  var instanceMirror = (mirror as ClassMirror).newInstance(Symbol(&#39;&#39;), [], {#bake: true, #register: true});
   return instanceMirror.reflectee;
 }</code></pre>
     </section>
@@ -106,7 +106,7 @@
 
 <footer>
   <span class="no-break">
-    mirror_json 0.0.3
+    mirror_json 0.1.1
   </span>
 
   
