@@ -42,14 +42,14 @@ class ClassParser<T> extends Parser<T> {
 
   factory ClassParser.fromType(Type R) {
     var mirror = reflectType(ClassParser, [R]);
-    var instanceMirror = (mirror as ClassMirror).newInstance(Symbol(''), [], {#preheat: true, #register: true});
+    var instanceMirror = (mirror as ClassMirror).newInstance(Symbol(''), [], {#bake: true, #register: true});
     return instanceMirror.reflectee;
   }
 
-  ClassParser({bool preheat = true, bool register = true}) {
+  ClassParser({bool bake = true, bool register = true}) {
     _classTypeMirror = reflectClass(T);
 
-    if (preheat) {
+    if (bake) {
       if (register) GlobalJsonParserInstance.queueParser(associatedTypeSymbol);
 
       _bake();
@@ -62,7 +62,7 @@ class ClassParser<T> extends Parser<T> {
     return mirror.metadata.any((metadataMirror) => metadataMirror.reflectee is JsonParseable);
   }
 
-  void _preheatVariable(VariableMirror mirror) {
+  void _bakeVariable(VariableMirror mirror) {
     Symbol name = mirror.simpleName;
     Symbol typeName = mirror.type.simpleName;
 
@@ -82,12 +82,13 @@ class ClassParser<T> extends Parser<T> {
     }
   }
 
+  /// Scan through all fields of a class and fill out the actions required to serialize/deserialize.
   void _bake() {
     _actions = {};
 
     for (var mirror in _classTypeMirror.declarations.values) {
       if (mirror is VariableMirror) {
-        _preheatVariable(mirror);
+        _bakeVariable(mirror);
       }
     }
   }
