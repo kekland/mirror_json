@@ -21,11 +21,11 @@ class ClassParserAction {
   }
 
   fromJson(dynamic json) {
-    return parser.fromJson(json, typeArgumentSymbol: typeArgumentSymbol, type: typeArgument);
+    return parser.fromJson(json, typeSymbol: typeArgumentSymbol, type: typeArgument);
   }
 
   toJson(dynamic object) {
-    return parser.toJson(object, typeArgumentSymbol: typeArgumentSymbol, type: typeArgument);
+    return parser.toJson(object, typeSymbol: typeArgumentSymbol, type: typeArgument);
   }
 }
 
@@ -93,7 +93,7 @@ class ClassParser<T> extends Parser<T> {
   }
 
   @override
-  T fromJson(json, {Symbol typeArgumentSymbol, Type type}) {
+  T fromJson(json, {Symbol typeSymbol, Type type}) {
     InstanceMirror mirror = (reflectType(T) as ClassMirror).newInstance(Symbol(''), []);
     _actions.forEach((name, action) {
       var data = json[action.fieldName];
@@ -103,7 +103,7 @@ class ClassParser<T> extends Parser<T> {
   }
 
   @override
-  toJson(T data, {Symbol typeArgumentSymbol, Type type}) {
+  toJson(T data, {Symbol typeSymbol, Type type}) {
     InstanceMirror mirror = reflect(data);
     Map json = {};
     _actions.forEach((name, action) {

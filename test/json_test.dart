@@ -5,25 +5,40 @@ import 'test_class.dart';
 
 void main() {
   group('json', () {
-    var parser = IntParser();
-
+    GlobalJsonParserInstance.initialize();
+    var parser = ClassParser<Human>();
     group('.toJson()', () {
       test(' class', () {
-        GlobalJsonParserInstance.initialize();
-        var parser = ClassParser<Human>();
         var human = Human(name: Name(first: 'first', last: 'last'), age: 18);
-        var json = Json.toJson(human);
+        var json = Json.toJson<Human>(human);
         expect(json, {
           'name': {'first': 'first', 'middle': null, 'last': 'last'},
           'age': 18
         });
+      });
+
+      test(' list', () {
+        var human1 = Human(name: Name(first: 'first', last: 'last'), age: 18);
+        var human2 = Human(name: Name(first: 'first', last: 'last'), age: 19);
+        List<Human> list = [human1, human2];
+        var json = Json.toJson<List>(list);
+
+        expect(json, [
+          {
+            'name': {'first': 'first', 'middle': null, 'last': 'last'},
+            'age': 18
+          },
+          {
+            'name': {'first': 'first', 'middle': null, 'last': 'last'},
+            'age': 19
+          }
+        ]);
       });
     });
 
     group('.fromJson()', () {
       test('class', () {
         var human = Human(name: Name(first: 'first', last: 'last'), age: 18);
-        var parser = ClassParser<Human>();
         var json = {
           'name': {'first': 'first', 'middle': null, 'last': 'last'},
           'age': 18
@@ -31,6 +46,28 @@ void main() {
         var convertedJson = Json.fromJson<Human>(json);
 
         expect(human, convertedJson);
+      });
+
+      test(' list', () {
+        var human1 = Human(name: Name(first: 'first', last: 'last'), age: 18);
+        var human2 = Human(name: Name(first: 'first', last: 'last'), age: 19);
+
+        List<Human> list = [human1, human2];
+
+        var json = [
+          {
+            'name': {'first': 'first', 'middle': null, 'last': 'last'},
+            'age': 18
+          },
+          {
+            'name': {'first': 'first', 'middle': null, 'last': 'last'},
+            'age': 19
+          }
+        ];
+
+        var convertedHumans = Json.fromJson<List<Human>>(json);
+
+        expect(convertedHumans, list);
       });
     });
   });

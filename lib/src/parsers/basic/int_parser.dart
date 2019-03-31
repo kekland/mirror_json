@@ -9,7 +9,7 @@ class IntParser extends Parser<int> {
   get associatedTypeSymbol => #int;
 
   @override
-  int fromJson(dynamic data, {Symbol typeArgumentSymbol, Type type}) {
+  int fromJson(dynamic data, {Symbol typeSymbol, Type type}) {
     if (data is num) {
       return data.toInt();
     }
@@ -17,7 +17,7 @@ class IntParser extends Parser<int> {
   }
 
   @override
-  toJson(int data, {Symbol typeArgumentSymbol, Type type}) {
+  toJson(int data, {Symbol typeSymbol, Type type}) {
     return data;
   }
 }

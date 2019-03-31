@@ -11,7 +11,7 @@ class ListParser extends Parser<List> {
   get associatedTypeSymbol => #List;
 
   @override
-  List fromJson(dynamic data, {Symbol typeArgumentSymbol, Type type}) {
+  List fromJson(dynamic data, {Symbol typeSymbol, Type type}) {
     if (data is List) {
       var typeMirror = reflectType(type);
       var mirror = (reflectType(type) as ClassMirror).newInstance(Symbol(''), []);
@@ -21,7 +21,7 @@ class ListParser extends Parser<List> {
         var parser = GlobalJsonParserInstance.getParser(argumentType.simpleName);
         mirror.reflectee.add(parser.fromJson(
           obj,
-          typeArgumentSymbol: argumentType.simpleName,
+          typeSymbol: argumentType.simpleName,
           type: argumentType.reflectedType,
         ));
       });
@@ -31,7 +31,7 @@ class ListParser extends Parser<List> {
   }
 
   @override
-  toJson(List data, {Symbol typeArgumentSymbol, Type type}) {
+  toJson(List data, {Symbol typeSymbol, Type type}) {
     List returnList = [];
     var typeMirror = reflectType(type);
     var argumentType = typeMirror.typeArguments.isNotEmpty ? typeMirror.typeArguments.first : null;
@@ -40,7 +40,7 @@ class ListParser extends Parser<List> {
       var parser = GlobalJsonParserInstance.getParser(argumentType.simpleName);
       returnList.add(parser.toJson(
         obj,
-        typeArgumentSymbol: argumentType.simpleName,
+        typeSymbol: argumentType.simpleName,
         type: argumentType.reflectedType,
       ));
     });

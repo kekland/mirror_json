@@ -9,12 +9,12 @@ class DynamicParser extends Parser<dynamic> {
   Symbol get associatedTypeSymbol => #dynamic;
 
   @override
-  fromJson(json, {Symbol typeArgumentSymbol, Type type}) {
+  fromJson(json, {Symbol typeSymbol, Type type}) {
     return json;
   }
 
   @override
-  toJson(data, {Symbol typeArgumentSymbol, Type type}) {
+  toJson(data, {Symbol typeSymbol, Type type}) {
     return data;
   }
 }

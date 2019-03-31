@@ -10,8 +10,8 @@ abstract class Parser<T> {
   Symbol get associatedTypeSymbol;
 
   /// Convert an instance of **T** to JSON.
-  dynamic toJson(T data, {Symbol typeArgumentSymbol, Type type});
+  dynamic toJson(T data, {Symbol typeSymbol, Type type});
 
   /// Create an instance of **T** from JSON.
-  T fromJson(dynamic json, {Symbol typeArgumentSymbol, Type type});
+  T fromJson(dynamic json, {Symbol typeSymbol, Type type});
 }
